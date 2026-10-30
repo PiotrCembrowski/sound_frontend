@@ -6,43 +6,67 @@ __turbopack_context__.s([
     "default",
     ()=>Home
 ]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = /*#__PURE__*/ __turbopack_context__.i("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 ;
-var _s = __turbopack_context__.k.signature();
+var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.signature();
 "use client";
 ;
-const references = [
-    {
-        id: 1,
-        name: "Glass breaking",
-        category: "Impact",
-        duration: "0:03",
-        color: "rose"
-    },
-    {
-        id: 2,
-        name: "Bird singing",
-        category: "Nature",
-        duration: "0:08",
-        color: "emerald"
-    },
-    {
-        id: 3,
-        name: "Door closing",
-        category: "Household",
-        duration: "0:02",
-        color: "amber"
-    },
-    {
-        id: 4,
-        name: "Water flowing",
-        category: "Nature",
-        duration: "0:12",
-        color: "blue"
-    }
+const NOTE_FILES = [
+    "c4",
+    "d4",
+    "e4",
+    "f4",
+    "g4",
+    "a4",
+    "b4"
 ];
+function PlayNoteButton() {
+    _s();
+    const audioRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const handlePlay = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
+        "PlayNoteButton.useCallback[handlePlay]": ()=>{
+            // Stop any currently playing note
+            if (audioRef.current) {
+                audioRef.current.pause();
+                audioRef.current.currentTime = 0;
+            }
+            // Pick a random note
+            const randomNote = NOTE_FILES[Math.floor(Math.random() * NOTE_FILES.length)];
+            const src = `/assets/notes/4_octave/${randomNote}.mp3`;
+            const audio = new Audio(src);
+            audioRef.current = audio;
+            audio.play().catch({
+                "PlayNoteButton.useCallback[handlePlay]": (err)=>{
+                    console.error(`Failed to play ${src}`, err);
+                }
+            }["PlayNoteButton.useCallback[handlePlay]"]);
+        }
+    }["PlayNoteButton.useCallback[handlePlay]"], []);
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+        onClick: handlePlay,
+        style: {
+            padding: "10px 24px",
+            fontSize: "1rem",
+            borderRadius: "8px",
+            border: "none",
+            background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+            color: "#fff",
+            cursor: "pointer",
+            fontWeight: 600,
+            transition: "transform 0.1s ease, box-shadow 0.2s ease"
+        },
+        onMouseDown: (e)=>e.currentTarget.style.transform = "scale(0.96)",
+        onMouseUp: (e)=>e.currentTarget.style.transform = "scale(1)",
+        children: "▶ Play the note"
+    }, void 0, false, {
+        fileName: "[project]/app/dashboard/page.tsx",
+        lineNumber: 34,
+        columnNumber: 5
+    }, this);
+}
+_s(PlayNoteButton, "Wx7f9qeWB3m1KXkxKfPSQnMjH8Q=");
+_c = PlayNoteButton;
 function Icon({ name, size = 20 }) {
     const paths = {
         wave: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -50,12 +74,12 @@ function Icon({ name, size = 20 }) {
                 d: "M2 10v4M6 5v14M10 2v20M14 7v10M18 4v16M22 9v6"
             }, void 0, false, {
                 fileName: "[project]/app/dashboard/page.tsx",
-                lineNumber: 15,
+                lineNumber: 57,
                 columnNumber: 13
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/dashboard/page.tsx",
-            lineNumber: 15,
+            lineNumber: 57,
             columnNumber: 11
         }, this),
         mic: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -68,20 +92,20 @@ function Icon({ name, size = 20 }) {
                     rx: "3"
                 }, void 0, false, {
                     fileName: "[project]/app/dashboard/page.tsx",
-                    lineNumber: 16,
+                    lineNumber: 58,
                     columnNumber: 12
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
                     d: "M5 10v2a7 7 0 0 0 14 0v-2M12 19v3m-4 0h8"
                 }, void 0, false, {
                     fileName: "[project]/app/dashboard/page.tsx",
-                    lineNumber: 16,
+                    lineNumber: 58,
                     columnNumber: 61
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/dashboard/page.tsx",
-            lineNumber: 16,
+            lineNumber: 58,
             columnNumber: 10
         }, this),
         upload: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -90,20 +114,20 @@ function Icon({ name, size = 20 }) {
                     d: "M12 16V4m-5 5 5-5 5 5"
                 }, void 0, false, {
                     fileName: "[project]/app/dashboard/page.tsx",
-                    lineNumber: 17,
+                    lineNumber: 59,
                     columnNumber: 15
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
                     d: "M4 16v4h16v-4"
                 }, void 0, false, {
                     fileName: "[project]/app/dashboard/page.tsx",
-                    lineNumber: 17,
+                    lineNumber: 59,
                     columnNumber: 49
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/dashboard/page.tsx",
-            lineNumber: 17,
+            lineNumber: 59,
             columnNumber: 13
         }, this),
         search: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -114,20 +138,20 @@ function Icon({ name, size = 20 }) {
                     r: "7"
                 }, void 0, false, {
                     fileName: "[project]/app/dashboard/page.tsx",
-                    lineNumber: 18,
+                    lineNumber: 60,
                     columnNumber: 15
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
                     d: "m16 16 4 4"
                 }, void 0, false, {
                     fileName: "[project]/app/dashboard/page.tsx",
-                    lineNumber: 18,
+                    lineNumber: 60,
                     columnNumber: 47
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/dashboard/page.tsx",
-            lineNumber: 18,
+            lineNumber: 60,
             columnNumber: 13
         }, this),
         music: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -136,7 +160,7 @@ function Icon({ name, size = 20 }) {
                     d: "M9 18V5l12-2v13"
                 }, void 0, false, {
                     fileName: "[project]/app/dashboard/page.tsx",
-                    lineNumber: 19,
+                    lineNumber: 61,
                     columnNumber: 14
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
@@ -145,7 +169,7 @@ function Icon({ name, size = 20 }) {
                     r: "3"
                 }, void 0, false, {
                     fileName: "[project]/app/dashboard/page.tsx",
-                    lineNumber: 19,
+                    lineNumber: 61,
                     columnNumber: 42
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
@@ -154,20 +178,20 @@ function Icon({ name, size = 20 }) {
                     r: "3"
                 }, void 0, false, {
                     fileName: "[project]/app/dashboard/page.tsx",
-                    lineNumber: 19,
+                    lineNumber: 61,
                     columnNumber: 73
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/dashboard/page.tsx",
-            lineNumber: 19,
+            lineNumber: 61,
             columnNumber: 12
         }, this),
         play: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
             d: "m8 5 12 7-12 7z"
         }, void 0, false, {
             fileName: "[project]/app/dashboard/page.tsx",
-            lineNumber: 20,
+            lineNumber: 62,
             columnNumber: 11
         }, this),
         pause: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -175,19 +199,19 @@ function Icon({ name, size = 20 }) {
                 d: "M8 5v14M16 5v14"
             }, void 0, false, {
                 fileName: "[project]/app/dashboard/page.tsx",
-                lineNumber: 21,
+                lineNumber: 63,
                 columnNumber: 14
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/dashboard/page.tsx",
-            lineNumber: 21,
+            lineNumber: 63,
             columnNumber: 12
         }, this),
         check: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
             d: "m5 12 4 4L19 6"
         }, void 0, false, {
             fileName: "[project]/app/dashboard/page.tsx",
-            lineNumber: 22,
+            lineNumber: 64,
             columnNumber: 12
         }, this),
         arrow: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -196,20 +220,20 @@ function Icon({ name, size = 20 }) {
                     d: "M5 12h14"
                 }, void 0, false, {
                     fileName: "[project]/app/dashboard/page.tsx",
-                    lineNumber: 23,
+                    lineNumber: 65,
                     columnNumber: 14
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
                     d: "m13 6 6 6-6 6"
                 }, void 0, false, {
                     fileName: "[project]/app/dashboard/page.tsx",
-                    lineNumber: 23,
+                    lineNumber: 65,
                     columnNumber: 35
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/dashboard/page.tsx",
-            lineNumber: 23,
+            lineNumber: 65,
             columnNumber: 12
         }, this),
         trash: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -217,12 +241,12 @@ function Icon({ name, size = 20 }) {
                 d: "M3 6h18M8 6V4h8v2m-11 0 1 14h10l1-14M10 10v6m4-6v6"
             }, void 0, false, {
                 fileName: "[project]/app/dashboard/page.tsx",
-                lineNumber: 24,
+                lineNumber: 66,
                 columnNumber: 14
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/dashboard/page.tsx",
-            lineNumber: 24,
+            lineNumber: 66,
             columnNumber: 12
         }, this),
         spark: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -231,20 +255,20 @@ function Icon({ name, size = 20 }) {
                     d: "m12 3 1.9 5.8L20 11l-6.1 2.2L12 19l-2-5.8L4 11l6-2.2z"
                 }, void 0, false, {
                     fileName: "[project]/app/dashboard/page.tsx",
-                    lineNumber: 25,
+                    lineNumber: 67,
                     columnNumber: 14
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
                     d: "m19 14 1.2 2.8L23 18l-2.8 1.2L19 22l-1.2-2.8L15 18l2.8-1.2z"
                 }, void 0, false, {
                     fileName: "[project]/app/dashboard/page.tsx",
-                    lineNumber: 25,
+                    lineNumber: 67,
                     columnNumber: 80
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/dashboard/page.tsx",
-            lineNumber: 25,
+            lineNumber: 67,
             columnNumber: 12
         }, this),
         clock: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -255,27 +279,27 @@ function Icon({ name, size = 20 }) {
                     r: "9"
                 }, void 0, false, {
                     fileName: "[project]/app/dashboard/page.tsx",
-                    lineNumber: 26,
+                    lineNumber: 68,
                     columnNumber: 14
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
                     d: "M12 7v5l3 2"
                 }, void 0, false, {
                     fileName: "[project]/app/dashboard/page.tsx",
-                    lineNumber: 26,
+                    lineNumber: 68,
                     columnNumber: 46
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/dashboard/page.tsx",
-            lineNumber: 26,
+            lineNumber: 68,
             columnNumber: 12
         }, this),
         folder: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
             d: "M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
         }, void 0, false, {
             fileName: "[project]/app/dashboard/page.tsx",
-            lineNumber: 27,
+            lineNumber: 69,
             columnNumber: 13
         }, this)
     };
@@ -292,39 +316,13 @@ function Icon({ name, size = 20 }) {
         children: paths[name]
     }, void 0, false, {
         fileName: "[project]/app/dashboard/page.tsx",
-        lineNumber: 31,
+        lineNumber: 73,
         columnNumber: 5
     }, this);
 }
-_c = Icon;
-function Waveform({ active = false, bars = 38 }) {
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "flex h-12 items-center justify-center gap-[3px]",
-        "aria-label": "Audio waveform",
-        children: Array.from({
-            length: bars
-        }, (_, i)=>{
-            const height = 12 + (i * 17 + i * i * 3) % 31;
-            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                className: `w-[3px] rounded-full transition-colors ${active ? "bg-violet-400" : "bg-violet-200"}`,
-                style: {
-                    height: `${height}px`
-                }
-            }, i, false, {
-                fileName: "[project]/app/dashboard/page.tsx",
-                lineNumber: 53,
-                columnNumber: 11
-            }, this);
-        })
-    }, void 0, false, {
-        fileName: "[project]/app/dashboard/page.tsx",
-        lineNumber: 49,
-        columnNumber: 5
-    }, this);
-}
-_c1 = Waveform;
+_c1 = Icon;
 function Home() {
-    _s();
+    _s1();
     const [recording, setRecording] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [audioUrl, setAudioUrl] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
     const [audioName, setAudioName] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
@@ -354,110 +352,6 @@ function Home() {
             })["Home.useEffect"];
         }
     }["Home.useEffect"], []);
-    function clearAudio() {
-        if (audioUrl) URL.revokeObjectURL(audioUrl);
-        setAudioUrl("");
-        setAudioName("");
-        setRecordedBlob(null);
-        setResult(null);
-        setElapsed(0);
-        setError("");
-    }
-    function loadFile(file) {
-        if (!file) return;
-        if (!file.type.startsWith("audio/")) {
-            setError("Please select an audio file.");
-            return;
-        }
-        clearAudio();
-        const url = URL.createObjectURL(file);
-        setAudioUrl(url);
-        setAudioName(file.name);
-        setRecordedBlob(file);
-    }
-    async function startRecording() {
-        setError("");
-        if (!navigator.mediaDevices?.getUserMedia || !window.MediaRecorder) {
-            setError("Your browser does not support microphone recording. Try a recent version of Chrome or Edge.");
-            return;
-        }
-        try {
-            const stream = await navigator.mediaDevices.getUserMedia({
-                audio: true
-            });
-            streamRef.current = stream;
-            chunksRef.current = [];
-            const recorder = new MediaRecorder(stream);
-            recorderRef.current = recorder;
-            recorder.ondataavailable = (event)=>{
-                if (event.data.size > 0) chunksRef.current.push(event.data);
-            };
-            recorder.onstop = ()=>{
-                const blob = new Blob(chunksRef.current, {
-                    type: recorder.mimeType || "audio/webm"
-                });
-                const url = URL.createObjectURL(blob);
-                setAudioUrl((old)=>{
-                    if (old) URL.revokeObjectURL(old);
-                    return url;
-                });
-                setAudioName("Microphone recording");
-                setRecordedBlob(blob);
-                setRecording(false);
-                stream.getTracks().forEach((track)=>track.stop());
-                streamRef.current = null;
-                clearInterval(timerRef.current);
-            };
-            setElapsed(0);
-            setResult(null);
-            setAudioName("Recording...");
-            setRecording(true);
-            recorder.start();
-            timerRef.current = setInterval(()=>{
-                setElapsed((value)=>value + 1);
-            }, 1000);
-        } catch  {
-            setError("Microphone access was denied. Allow microphone access in your browser settings and try again.");
-        }
-    }
-    function stopRecording() {
-        if (recorderRef.current?.state === "recording") {
-            recorderRef.current.stop();
-        }
-    }
-    async function compareAudio() {
-        if (!recordedBlob) {
-            setError("Record a sound or upload an audio file first.");
-            return;
-        }
-        setBusy(true);
-        setError("");
-        setResult(null);
-        try {
-            const formData = new FormData();
-            formData.append("audio", recordedBlob, audioName || "recording.webm");
-            formData.append("reference_id", String(selected));
-            // Connect this endpoint to your FastAPI backend.
-            const response = await fetch(`${("TURBOPACK compile-time value", "http://localhost:8000") || "http://localhost:8000"}/compare`, {
-                method: "POST",
-                body: formData
-            });
-            if (!response.ok) {
-                throw new Error(response.status === 404 ? "The /compare endpoint is not implemented in your backend yet." : `The server returned error ${response.status}.`);
-            }
-            const data = await response.json();
-            setResult(data);
-        } catch (err) {
-            setError(err.message?.includes("Failed to fetch") ? "Cannot reach the Python backend. Start FastAPI and check its CORS settings." : err.message || "Audio comparison failed.");
-        } finally{
-            setBusy(false);
-        }
-    }
-    const filtered = references.filter((item)=>`${item.name} ${item.category}`.toLowerCase().includes(search.toLowerCase()));
-    const selectedReference = references.find((item)=>item.id === selected);
-    const formatTime = (seconds)=>`${Math.floor(seconds / 60).toString().padStart(2, "0")}:${(seconds % 60).toString().padStart(2, "0")}`;
-    const score = result?.similarity ?? result?.score;
-    const percent = typeof score === "number" ? Math.round(score <= 1 ? score * 100 : score) : null;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
         className: "min-h-screen bg-[#f7f7fb] text-slate-900",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -477,12 +371,12 @@ function Home() {
                                         size: 23
                                     }, void 0, false, {
                                         fileName: "[project]/app/dashboard/page.tsx",
-                                        lineNumber: 236,
+                                        lineNumber: 126,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/dashboard/page.tsx",
-                                    lineNumber: 235,
+                                    lineNumber: 125,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -492,7 +386,7 @@ function Home() {
                                             children: "SoundMatch"
                                         }, void 0, false, {
                                             fileName: "[project]/app/dashboard/page.tsx",
-                                            lineNumber: 239,
+                                            lineNumber: 129,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -500,19 +394,19 @@ function Home() {
                                             children: "Audio intelligence"
                                         }, void 0, false, {
                                             fileName: "[project]/app/dashboard/page.tsx",
-                                            lineNumber: 240,
+                                            lineNumber: 130,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/dashboard/page.tsx",
-                                    lineNumber: 238,
+                                    lineNumber: 128,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/dashboard/page.tsx",
-                            lineNumber: 234,
+                            lineNumber: 124,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -520,7 +414,7 @@ function Home() {
                             children: "Workspace"
                         }, void 0, false, {
                             fileName: "[project]/app/dashboard/page.tsx",
-                            lineNumber: 244,
+                            lineNumber: 134,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -535,14 +429,14 @@ function Home() {
                                             size: 18
                                         }, void 0, false, {
                                             fileName: "[project]/app/dashboard/page.tsx",
-                                            lineNumber: 250,
+                                            lineNumber: 140,
                                             columnNumber: 15
                                         }, this),
                                         "Sound comparison"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/dashboard/page.tsx",
-                                    lineNumber: 249,
+                                    lineNumber: 139,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -554,14 +448,14 @@ function Home() {
                                             size: 18
                                         }, void 0, false, {
                                             fileName: "[project]/app/dashboard/page.tsx",
-                                            lineNumber: 254,
+                                            lineNumber: 144,
                                             columnNumber: 15
                                         }, this),
                                         "Sound library"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/dashboard/page.tsx",
-                                    lineNumber: 253,
+                                    lineNumber: 143,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -573,20 +467,20 @@ function Home() {
                                             size: 18
                                         }, void 0, false, {
                                             fileName: "[project]/app/dashboard/page.tsx",
-                                            lineNumber: 258,
+                                            lineNumber: 148,
                                             columnNumber: 15
                                         }, this),
                                         "Latest results"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/dashboard/page.tsx",
-                                    lineNumber: 257,
+                                    lineNumber: 147,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/dashboard/page.tsx",
-                            lineNumber: 248,
+                            lineNumber: 138,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -599,12 +493,12 @@ function Home() {
                                         size: 19
                                     }, void 0, false, {
                                         fileName: "[project]/app/dashboard/page.tsx",
-                                        lineNumber: 265,
+                                        lineNumber: 155,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/dashboard/page.tsx",
-                                    lineNumber: 264,
+                                    lineNumber: 154,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -612,7 +506,7 @@ function Home() {
                                     children: "Find the sound"
                                 }, void 0, false, {
                                     fileName: "[project]/app/dashboard/page.tsx",
-                                    lineNumber: 267,
+                                    lineNumber: 157,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -620,13 +514,13 @@ function Home() {
                                     children: "Compare recordings against your collection of reference sounds."
                                 }, void 0, false, {
                                     fileName: "[project]/app/dashboard/page.tsx",
-                                    lineNumber: 268,
+                                    lineNumber: 158,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/dashboard/page.tsx",
-                            lineNumber: 263,
+                            lineNumber: 153,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -637,7 +531,7 @@ function Home() {
                                     children: "SM"
                                 }, void 0, false, {
                                     fileName: "[project]/app/dashboard/page.tsx",
-                                    lineNumber: 274,
+                                    lineNumber: 164,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -647,7 +541,7 @@ function Home() {
                                             children: "My workspace"
                                         }, void 0, false, {
                                             fileName: "[project]/app/dashboard/page.tsx",
-                                            lineNumber: 278,
+                                            lineNumber: 168,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -655,25 +549,25 @@ function Home() {
                                             children: "Personal project"
                                         }, void 0, false, {
                                             fileName: "[project]/app/dashboard/page.tsx",
-                                            lineNumber: 279,
+                                            lineNumber: 169,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/dashboard/page.tsx",
-                                    lineNumber: 277,
+                                    lineNumber: 167,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/dashboard/page.tsx",
-                            lineNumber: 273,
+                            lineNumber: 163,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/dashboard/page.tsx",
-                    lineNumber: 233,
+                    lineNumber: 123,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -692,12 +586,12 @@ function Home() {
                                                 size: 20
                                             }, void 0, false, {
                                                 fileName: "[project]/app/dashboard/page.tsx",
-                                                lineNumber: 289,
+                                                lineNumber: 179,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/dashboard/page.tsx",
-                                            lineNumber: 288,
+                                            lineNumber: 178,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -705,13 +599,13 @@ function Home() {
                                             children: "SoundMatch"
                                         }, void 0, false, {
                                             fileName: "[project]/app/dashboard/page.tsx",
-                                            lineNumber: 291,
+                                            lineNumber: 181,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/dashboard/page.tsx",
-                                    lineNumber: 287,
+                                    lineNumber: 177,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -723,7 +617,7 @@ function Home() {
                                             children: "/"
                                         }, void 0, false, {
                                             fileName: "[project]/app/dashboard/page.tsx",
-                                            lineNumber: 294,
+                                            lineNumber: 184,
                                             columnNumber: 25
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -731,13 +625,13 @@ function Home() {
                                             children: "Sound comparison"
                                         }, void 0, false, {
                                             fileName: "[project]/app/dashboard/page.tsx",
-                                            lineNumber: 295,
+                                            lineNumber: 185,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/dashboard/page.tsx",
-                                    lineNumber: 293,
+                                    lineNumber: 183,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -750,14 +644,14 @@ function Home() {
                                                     className: "h-2 w-2 rounded-full bg-emerald-500"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                    lineNumber: 299,
+                                                    lineNumber: 189,
                                                     columnNumber: 17
                                                 }, this),
                                                 "Audio workspace"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/dashboard/page.tsx",
-                                            lineNumber: 298,
+                                            lineNumber: 188,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -765,19 +659,19 @@ function Home() {
                                             children: "S"
                                         }, void 0, false, {
                                             fileName: "[project]/app/dashboard/page.tsx",
-                                            lineNumber: 302,
+                                            lineNumber: 192,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/dashboard/page.tsx",
-                                    lineNumber: 297,
+                                    lineNumber: 187,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/dashboard/page.tsx",
-                            lineNumber: 286,
+                            lineNumber: 176,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -796,14 +690,14 @@ function Home() {
                                                             size: 15
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                            lineNumber: 313,
+                                                            lineNumber: 203,
                                                             columnNumber: 19
                                                         }, this),
                                                         "Audio analysis studio"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                    lineNumber: 312,
+                                                    lineNumber: 202,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -811,7 +705,7 @@ function Home() {
                                                     children: "Find your sound."
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                    lineNumber: 316,
+                                                    lineNumber: 206,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -819,13 +713,13 @@ function Home() {
                                                     children: "Record a sound, choose a reference, and discover how closely they match."
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                    lineNumber: 319,
+                                                    lineNumber: 209,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/dashboard/page.tsx",
-                                            lineNumber: 311,
+                                            lineNumber: 201,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -837,7 +731,7 @@ function Home() {
                                                     size: 17
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                    lineNumber: 324,
+                                                    lineNumber: 214,
                                                     columnNumber: 17
                                                 }, this),
                                                 "Browse library",
@@ -846,19 +740,19 @@ function Home() {
                                                     size: 15
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                    lineNumber: 326,
+                                                    lineNumber: 216,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/dashboard/page.tsx",
-                                            lineNumber: 323,
+                                            lineNumber: 213,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/dashboard/page.tsx",
-                                    lineNumber: 310,
+                                    lineNumber: 200,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -875,7 +769,7 @@ function Home() {
                                                             children: "Reference sounds"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                            lineNumber: 334,
+                                                            lineNumber: 224,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -884,18 +778,18 @@ function Home() {
                                                                 name: "music"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/dashboard/page.tsx",
-                                                                lineNumber: 336,
+                                                                lineNumber: 226,
                                                                 columnNumber: 21
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                            lineNumber: 335,
+                                                            lineNumber: 225,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                    lineNumber: 333,
+                                                    lineNumber: 223,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -903,7 +797,7 @@ function Home() {
                                                     children: "04"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                    lineNumber: 339,
+                                                    lineNumber: 229,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -911,13 +805,13 @@ function Home() {
                                                     children: "Sample library"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                    lineNumber: 340,
+                                                    lineNumber: 230,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/dashboard/page.tsx",
-                                            lineNumber: 332,
+                                            lineNumber: 222,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -931,7 +825,7 @@ function Home() {
                                                             children: "Current recording"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                            lineNumber: 344,
+                                                            lineNumber: 234,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -940,18 +834,18 @@ function Home() {
                                                                 name: "mic"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/dashboard/page.tsx",
-                                                                lineNumber: 346,
+                                                                lineNumber: 236,
                                                                 columnNumber: 21
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                            lineNumber: 345,
+                                                            lineNumber: 235,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                    lineNumber: 343,
+                                                    lineNumber: 233,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -959,7 +853,7 @@ function Home() {
                                                     children: recordedBlob ? "Ready" : "--"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                    lineNumber: 349,
+                                                    lineNumber: 239,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -967,13 +861,13 @@ function Home() {
                                                     children: recordedBlob ? audioName : "Awaiting audio input"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                    lineNumber: 350,
+                                                    lineNumber: 240,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/dashboard/page.tsx",
-                                            lineNumber: 342,
+                                            lineNumber: 232,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -987,7 +881,7 @@ function Home() {
                                                             children: "Latest similarity"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                            lineNumber: 356,
+                                                            lineNumber: 246,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -996,26 +890,25 @@ function Home() {
                                                                 name: "check"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/dashboard/page.tsx",
-                                                                lineNumber: 358,
+                                                                lineNumber: 248,
                                                                 columnNumber: 21
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                            lineNumber: 357,
+                                                            lineNumber: 247,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                    lineNumber: 355,
+                                                    lineNumber: 245,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "mt-3 text-3xl font-bold",
-                                                    children: percent === null ? "--" : `${percent}%`
+                                                    className: "mt-3 text-3xl font-bold"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                    lineNumber: 361,
+                                                    lineNumber: 251,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1023,19 +916,19 @@ function Home() {
                                                     children: result ? "Returned by your backend" : "No comparison yet"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                    lineNumber: 364,
+                                                    lineNumber: 253,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/dashboard/page.tsx",
-                                            lineNumber: 354,
+                                            lineNumber: 244,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/dashboard/page.tsx",
-                                    lineNumber: 331,
+                                    lineNumber: 221,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1057,7 +950,7 @@ function Home() {
                                                                             children: "Your audio input"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                                            lineNumber: 376,
+                                                                            lineNumber: 265,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1065,13 +958,13 @@ function Home() {
                                                                             children: "Step 1 · Record or upload a sound"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                                            lineNumber: 377,
+                                                                            lineNumber: 266,
                                                                             columnNumber: 23
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                                    lineNumber: 375,
+                                                                    lineNumber: 264,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1079,258 +972,112 @@ function Home() {
                                                                     children: "INPUT"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                                    lineNumber: 379,
+                                                                    lineNumber: 268,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                            lineNumber: 374,
+                                                            lineNumber: 263,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "p-6",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: "relative overflow-hidden rounded-2xl border border-violet-100 bg-gradient-to-br from-[#faf8ff] via-[#f6f4ff] to-[#f0f3ff] p-6 md:p-8",
-                                                                    children: [
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                            className: "absolute -right-10 -top-10 h-36 w-36 rounded-full bg-violet-200/20 blur-2xl"
-                                                                        }, void 0, false, {
-                                                                            fileName: "[project]/app/dashboard/page.tsx",
-                                                                            lineNumber: 386,
-                                                                            columnNumber: 23
-                                                                        }, this),
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                            className: "relative flex flex-col items-center text-center",
-                                                                            children: [
-                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                    className: `mb-5 flex h-16 w-16 items-center justify-center rounded-2xl shadow-lg transition ${recording ? "animate-pulse bg-rose-500 text-white shadow-rose-200" : "bg-white text-violet-600 shadow-violet-100"}`,
-                                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Icon, {
-                                                                                        name: "mic",
-                                                                                        size: 28
-                                                                                    }, void 0, false, {
-                                                                                        fileName: "[project]/app/dashboard/page.tsx",
-                                                                                        lineNumber: 393,
-                                                                                        columnNumber: 27
-                                                                                    }, this)
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "relative overflow-hidden rounded-2xl border border-violet-100 bg-gradient-to-br from-[#faf8ff] via-[#f6f4ff] to-[#f0f3ff] p-6 md:p-8",
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        className: "absolute -right-10 -top-10 h-36 w-36 rounded-full bg-violet-200/20 blur-2xl"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/dashboard/page.tsx",
+                                                                        lineNumber: 275,
+                                                                        columnNumber: 23
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        className: "relative flex flex-col items-center text-center",
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                className: `mb-5 flex h-16 w-16 items-center justify-center rounded-2xl shadow-lg transition ${recording ? "animate-pulse bg-rose-500 text-white shadow-rose-200" : "bg-white text-violet-600 shadow-violet-100"}`,
+                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Icon, {
+                                                                                    name: "mic",
+                                                                                    size: 28
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                                                    lineNumber: 388,
-                                                                                    columnNumber: 25
-                                                                                }, this),
-                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                                                                    className: "text-lg font-bold",
-                                                                                    children: recording ? "Listening to your sound..." : audioName || "Capture a sound"
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/app/dashboard/page.tsx",
-                                                                                    lineNumber: 395,
-                                                                                    columnNumber: 25
-                                                                                }, this),
-                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                                    className: "mt-2 max-w-sm text-sm leading-6 text-slate-500",
-                                                                                    children: recording ? "Make your sound now. Stop recording when you're finished." : recordedBlob ? "Your audio is ready. You can listen to it or compare it with a reference." : "Use your microphone or choose an existing audio file to get started."
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/app/dashboard/page.tsx",
-                                                                                    lineNumber: 398,
-                                                                                    columnNumber: 25
-                                                                                }, this),
-                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                    className: "my-5 w-full max-w-sm",
-                                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Waveform, {
-                                                                                        active: recording || Boolean(recordedBlob)
-                                                                                    }, void 0, false, {
-                                                                                        fileName: "[project]/app/dashboard/page.tsx",
-                                                                                        lineNumber: 407,
-                                                                                        columnNumber: 27
-                                                                                    }, this)
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/app/dashboard/page.tsx",
-                                                                                    lineNumber: 406,
-                                                                                    columnNumber: 25
-                                                                                }, this),
-                                                                                recording && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                    className: "mb-4 flex items-center gap-2 text-sm font-semibold text-rose-600",
-                                                                                    children: [
-                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                            className: "h-2 w-2 animate-pulse rounded-full bg-rose-500"
-                                                                                        }, void 0, false, {
-                                                                                            fileName: "[project]/app/dashboard/page.tsx",
-                                                                                            lineNumber: 412,
-                                                                                            columnNumber: 29
-                                                                                        }, this),
-                                                                                        "REC ",
-                                                                                        formatTime(elapsed)
-                                                                                    ]
-                                                                                }, void 0, true, {
-                                                                                    fileName: "[project]/app/dashboard/page.tsx",
-                                                                                    lineNumber: 411,
-                                                                                    columnNumber: 27
-                                                                                }, this),
-                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                    className: "flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row",
-                                                                                    children: [
-                                                                                        recording ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                                                            onClick: stopRecording,
-                                                                                            className: "inline-flex items-center justify-center gap-2 rounded-xl bg-rose-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-rose-100 transition hover:bg-rose-600",
-                                                                                            children: [
-                                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                                    className: "h-3 w-3 rounded-sm bg-white"
-                                                                                                }, void 0, false, {
-                                                                                                    fileName: "[project]/app/dashboard/page.tsx",
-                                                                                                    lineNumber: 420,
-                                                                                                    columnNumber: 31
-                                                                                                }, this),
-                                                                                                "Stop recording"
-                                                                                            ]
-                                                                                        }, void 0, true, {
-                                                                                            fileName: "[project]/app/dashboard/page.tsx",
-                                                                                            lineNumber: 419,
-                                                                                            columnNumber: 29
-                                                                                        }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                                                            onClick: startRecording,
-                                                                                            className: "inline-flex items-center justify-center gap-2 rounded-xl bg-violet-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-200 transition hover:-translate-y-0.5 hover:bg-violet-700",
-                                                                                            children: recordedBlob ? "Play again" : "Play the note"
-                                                                                        }, void 0, false, {
-                                                                                            fileName: "[project]/app/dashboard/page.tsx",
-                                                                                            lineNumber: 424,
-                                                                                            columnNumber: 29
-                                                                                        }, this),
-                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                                                            onClick: ()=>fileRef.current?.click(),
-                                                                                            disabled: recording,
-                                                                                            className: "inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-violet-200 hover:text-violet-700 disabled:opacity-50",
-                                                                                            children: "Next"
-                                                                                        }, void 0, false, {
-                                                                                            fileName: "[project]/app/dashboard/page.tsx",
-                                                                                            lineNumber: 428,
-                                                                                            columnNumber: 27
-                                                                                        }, this),
-                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                                                            ref: fileRef,
-                                                                                            type: "file",
-                                                                                            accept: "audio/*,.wav,.mp3,.flac,.ogg,.webm,.m4a",
-                                                                                            className: "hidden",
-                                                                                            onChange: (event)=>{
-                                                                                                loadFile(event.target.files?.[0]);
-                                                                                                event.target.value = "";
-                                                                                            }
-                                                                                        }, void 0, false, {
-                                                                                            fileName: "[project]/app/dashboard/page.tsx",
-                                                                                            lineNumber: 435,
-                                                                                            columnNumber: 27
-                                                                                        }, this)
-                                                                                    ]
-                                                                                }, void 0, true, {
-                                                                                    fileName: "[project]/app/dashboard/page.tsx",
-                                                                                    lineNumber: 417,
-                                                                                    columnNumber: 25
-                                                                                }, this),
-                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                                    className: "mt-4 text-[11px] text-slate-400",
-                                                                                    children: "Microphone access requires your permission. Upload supported audio files."
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/app/dashboard/page.tsx",
-                                                                                    lineNumber: 447,
-                                                                                    columnNumber: 25
-                                                                                }, this)
-                                                                            ]
-                                                                        }, void 0, true, {
-                                                                            fileName: "[project]/app/dashboard/page.tsx",
-                                                                            lineNumber: 387,
-                                                                            columnNumber: 23
-                                                                        }, this)
-                                                                    ]
-                                                                }, void 0, true, {
-                                                                    fileName: "[project]/app/dashboard/page.tsx",
-                                                                    lineNumber: 385,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                audioUrl && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: "mt-4 flex items-center gap-3 rounded-xl border border-slate-200 p-4",
-                                                                    children: [
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                            className: "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-50 text-violet-600",
-                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Icon, {
-                                                                                name: "music",
-                                                                                size: 19
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/app/dashboard/page.tsx",
-                                                                                lineNumber: 456,
-                                                                                columnNumber: 27
-                                                                            }, this)
-                                                                        }, void 0, false, {
-                                                                            fileName: "[project]/app/dashboard/page.tsx",
-                                                                            lineNumber: 455,
-                                                                            columnNumber: 25
-                                                                        }, this),
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                            className: "min-w-0 flex-1",
-                                                                            children: [
-                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                    className: "truncate text-sm font-semibold",
-                                                                                    children: audioName
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/app/dashboard/page.tsx",
-                                                                                    lineNumber: 459,
-                                                                                    columnNumber: 27
-                                                                                }, this),
-                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                    className: "mt-1 text-xs text-slate-400",
-                                                                                    children: "Audio input ready"
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/app/dashboard/page.tsx",
-                                                                                    lineNumber: 460,
+                                                                                    lineNumber: 282,
                                                                                     columnNumber: 27
                                                                                 }, this)
-                                                                            ]
-                                                                        }, void 0, true, {
-                                                                            fileName: "[project]/app/dashboard/page.tsx",
-                                                                            lineNumber: 458,
-                                                                            columnNumber: 25
-                                                                        }, this),
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("audio", {
-                                                                            controls: true,
-                                                                            src: audioUrl,
-                                                                            className: "h-9 max-w-[140px]"
-                                                                        }, void 0, false, {
-                                                                            fileName: "[project]/app/dashboard/page.tsx",
-                                                                            lineNumber: 462,
-                                                                            columnNumber: 25
-                                                                        }, this),
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                                            onClick: clearAudio,
-                                                                            title: "Remove audio",
-                                                                            className: "rounded-lg p-2 text-slate-400 transition hover:bg-rose-50 hover:text-rose-600",
-                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Icon, {
-                                                                                name: "trash",
-                                                                                size: 17
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/dashboard/page.tsx",
-                                                                                lineNumber: 464,
-                                                                                columnNumber: 27
+                                                                                lineNumber: 277,
+                                                                                columnNumber: 25
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                                                className: "text-lg font-bold",
+                                                                                children: recording ? "Listening to your sound..." : audioName || "Capture a sound"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/app/dashboard/page.tsx",
+                                                                                lineNumber: 284,
+                                                                                columnNumber: 25
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                                className: "mt-2 max-w-sm text-sm leading-6 text-slate-500",
+                                                                                children: recording ? "Make your sound now. Stop recording when you're finished." : recordedBlob ? "Your audio is ready. You can listen to it or compare it with a reference." : "Use your microphone or choose an existing audio file to get started."
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/app/dashboard/page.tsx",
+                                                                                lineNumber: 287,
+                                                                                columnNumber: 25
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                className: "flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row",
+                                                                                children: [
+                                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(PlayNoteButton, {}, void 0, false, {
+                                                                                        fileName: "[project]/app/dashboard/page.tsx",
+                                                                                        lineNumber: 298,
+                                                                                        columnNumber: 27
+                                                                                    }, this),
+                                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                                                        className: "inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-violet-200 hover:text-violet-700 disabled:opacity-50",
+                                                                                        children: "Next"
+                                                                                    }, void 0, false, {
+                                                                                        fileName: "[project]/app/dashboard/page.tsx",
+                                                                                        lineNumber: 299,
+                                                                                        columnNumber: 27
+                                                                                    }, this)
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/app/dashboard/page.tsx",
+                                                                                lineNumber: 297,
+                                                                                columnNumber: 25
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                                className: "mt-4 text-[11px] text-slate-400",
+                                                                                children: "Microphone access requires your permission. Upload supported audio files."
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/app/dashboard/page.tsx",
+                                                                                lineNumber: 306,
+                                                                                columnNumber: 25
                                                                             }, this)
-                                                                        }, void 0, false, {
-                                                                            fileName: "[project]/app/dashboard/page.tsx",
-                                                                            lineNumber: 463,
-                                                                            columnNumber: 25
-                                                                        }, this)
-                                                                    ]
-                                                                }, void 0, true, {
-                                                                    fileName: "[project]/app/dashboard/page.tsx",
-                                                                    lineNumber: 454,
-                                                                    columnNumber: 23
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/app/dashboard/page.tsx",
+                                                                        lineNumber: 276,
+                                                                        columnNumber: 23
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/app/dashboard/page.tsx",
+                                                                lineNumber: 274,
+                                                                columnNumber: 21
+                                                            }, this)
+                                                        }, void 0, false, {
                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                            lineNumber: 384,
+                                                            lineNumber: 273,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                    lineNumber: 373,
+                                                    lineNumber: 262,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1347,7 +1094,7 @@ function Home() {
                                                                             children: "Choose a reference sound"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                                            lineNumber: 475,
+                                                                            lineNumber: 319,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1355,30 +1102,26 @@ function Home() {
                                                                             children: "Step 2 · Select the sound to compare against"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                                            lineNumber: 476,
+                                                                            lineNumber: 320,
                                                                             columnNumber: 23
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                                    lineNumber: 474,
+                                                                    lineNumber: 318,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "w-fit rounded-full bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-500",
-                                                                    children: [
-                                                                        references.length,
-                                                                        " sounds"
-                                                                    ]
-                                                                }, void 0, true, {
+                                                                    className: "w-fit rounded-full bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-500"
+                                                                }, void 0, false, {
                                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                                    lineNumber: 478,
+                                                                    lineNumber: 322,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                            lineNumber: 473,
+                                                            lineNumber: 317,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1394,12 +1137,12 @@ function Home() {
                                                                                 size: 17
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/dashboard/page.tsx",
-                                                                                lineNumber: 486,
+                                                                                lineNumber: 330,
                                                                                 columnNumber: 25
                                                                             }, this)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                                            lineNumber: 485,
+                                                                            lineNumber: 329,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1409,247 +1152,53 @@ function Home() {
                                                                             className: "w-full rounded-xl border border-slate-200 bg-slate-50 py-3 pl-10 pr-4 text-sm outline-none transition placeholder:text-slate-400 focus:border-violet-300 focus:bg-white focus:ring-4 focus:ring-violet-50"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                                            lineNumber: 488,
+                                                                            lineNumber: 332,
                                                                             columnNumber: 23
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                                    lineNumber: 484,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: "space-y-2",
-                                                                    children: [
-                                                                        filtered.map((item)=>{
-                                                                            const isSelected = selected === item.id;
-                                                                            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                                                onClick: ()=>{
-                                                                                    setSelected(item.id);
-                                                                                    setResult(null);
-                                                                                },
-                                                                                className: `flex w-full items-center gap-3 rounded-xl border p-3 text-left transition ${isSelected ? "border-violet-300 bg-violet-50/70 ring-1 ring-violet-100" : "border-slate-100 hover:border-slate-200 hover:bg-slate-50"}`,
-                                                                                children: [
-                                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                        className: `flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${item.color === "rose" ? "bg-rose-50 text-rose-500" : item.color === "emerald" ? "bg-emerald-50 text-emerald-600" : item.color === "amber" ? "bg-amber-50 text-amber-600" : "bg-blue-50 text-blue-600"}`,
-                                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Icon, {
-                                                                                            name: "music",
-                                                                                            size: 20
-                                                                                        }, void 0, false, {
-                                                                                            fileName: "[project]/app/dashboard/page.tsx",
-                                                                                            lineNumber: 518,
-                                                                                            columnNumber: 31
-                                                                                        }, this)
-                                                                                    }, void 0, false, {
-                                                                                        fileName: "[project]/app/dashboard/page.tsx",
-                                                                                        lineNumber: 512,
-                                                                                        columnNumber: 29
-                                                                                    }, this),
-                                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                        className: "min-w-0 flex-1",
-                                                                                        children: [
-                                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                                className: "text-sm font-semibold",
-                                                                                                children: item.name
-                                                                                            }, void 0, false, {
-                                                                                                fileName: "[project]/app/dashboard/page.tsx",
-                                                                                                lineNumber: 521,
-                                                                                                columnNumber: 31
-                                                                                            }, this),
-                                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                                className: "mt-1 text-xs text-slate-400",
-                                                                                                children: [
-                                                                                                    item.category,
-                                                                                                    " ",
-                                                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                                        className: "mx-1.5",
-                                                                                                        children: "·"
-                                                                                                    }, void 0, false, {
-                                                                                                        fileName: "[project]/app/dashboard/page.tsx",
-                                                                                                        lineNumber: 523,
-                                                                                                        columnNumber: 49
-                                                                                                    }, this),
-                                                                                                    " ",
-                                                                                                    item.duration
-                                                                                                ]
-                                                                                            }, void 0, true, {
-                                                                                                fileName: "[project]/app/dashboard/page.tsx",
-                                                                                                lineNumber: 522,
-                                                                                                columnNumber: 31
-                                                                                            }, this)
-                                                                                        ]
-                                                                                    }, void 0, true, {
-                                                                                        fileName: "[project]/app/dashboard/page.tsx",
-                                                                                        lineNumber: 520,
-                                                                                        columnNumber: 29
-                                                                                    }, this),
-                                                                                    isSelected ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                        className: "flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-violet-600 text-white",
-                                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Icon, {
-                                                                                            name: "check",
-                                                                                            size: 14
-                                                                                        }, void 0, false, {
-                                                                                            fileName: "[project]/app/dashboard/page.tsx",
-                                                                                            lineNumber: 528,
-                                                                                            columnNumber: 33
-                                                                                        }, this)
-                                                                                    }, void 0, false, {
-                                                                                        fileName: "[project]/app/dashboard/page.tsx",
-                                                                                        lineNumber: 527,
-                                                                                        columnNumber: 31
-                                                                                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                        className: "h-5 w-5 shrink-0 rounded-full border border-slate-300"
-                                                                                    }, void 0, false, {
-                                                                                        fileName: "[project]/app/dashboard/page.tsx",
-                                                                                        lineNumber: 531,
-                                                                                        columnNumber: 31
-                                                                                    }, this)
-                                                                                ]
-                                                                            }, item.id, true, {
-                                                                                fileName: "[project]/app/dashboard/page.tsx",
-                                                                                lineNumber: 500,
-                                                                                columnNumber: 27
-                                                                            }, this);
-                                                                        }),
-                                                                        filtered.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                            className: "py-8 text-center text-sm text-slate-400",
-                                                                            children: "No reference sounds match your search."
-                                                                        }, void 0, false, {
-                                                                            fileName: "[project]/app/dashboard/page.tsx",
-                                                                            lineNumber: 537,
-                                                                            columnNumber: 25
-                                                                        }, this)
-                                                                    ]
-                                                                }, void 0, true, {
-                                                                    fileName: "[project]/app/dashboard/page.tsx",
-                                                                    lineNumber: 496,
+                                                                    lineNumber: 328,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     className: "mt-5 flex items-start gap-3 rounded-xl bg-slate-50 p-4",
-                                                                    children: [
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                            className: "mt-0.5 text-violet-600",
-                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Icon, {
-                                                                                name: "spark",
-                                                                                size: 18
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/app/dashboard/page.tsx",
-                                                                                lineNumber: 545,
-                                                                                columnNumber: 25
-                                                                            }, this)
+                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        className: "mt-0.5 text-violet-600",
+                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Icon, {
+                                                                            name: "spark",
+                                                                            size: 18
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                                            lineNumber: 544,
-                                                                            columnNumber: 23
-                                                                        }, this),
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                            children: [
-                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                    className: "text-sm font-semibold",
-                                                                                    children: [
-                                                                                        "Selected: ",
-                                                                                        selectedReference?.name
-                                                                                    ]
-                                                                                }, void 0, true, {
-                                                                                    fileName: "[project]/app/dashboard/page.tsx",
-                                                                                    lineNumber: 548,
-                                                                                    columnNumber: 25
-                                                                                }, this),
-                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                                    className: "mt-1 text-xs leading-5 text-slate-500",
-                                                                                    children: "Your recording will be sent to the comparison API with this reference ID."
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/app/dashboard/page.tsx",
-                                                                                    lineNumber: 549,
-                                                                                    columnNumber: 25
-                                                                                }, this)
-                                                                            ]
-                                                                        }, void 0, true, {
-                                                                            fileName: "[project]/app/dashboard/page.tsx",
-                                                                            lineNumber: 547,
-                                                                            columnNumber: 23
+                                                                            lineNumber: 343,
+                                                                            columnNumber: 25
                                                                         }, this)
-                                                                    ]
-                                                                }, void 0, true, {
-                                                                    fileName: "[project]/app/dashboard/page.tsx",
-                                                                    lineNumber: 543,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                                    onClick: compareAudio,
-                                                                    disabled: !recordedBlob || busy || recording,
-                                                                    className: "mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-violet-600 px-5 py-3.5 text-sm font-semibold text-white shadow-lg shadow-violet-100 transition hover:bg-violet-700 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:shadow-none",
-                                                                    children: busy ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
-                                                                        children: [
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                className: "h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white"
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/app/dashboard/page.tsx",
-                                                                                lineNumber: 562,
-                                                                                columnNumber: 27
-                                                                            }, this),
-                                                                            "Comparing audio..."
-                                                                        ]
-                                                                    }, void 0, true, {
+                                                                    }, void 0, false, {
                                                                         fileName: "[project]/app/dashboard/page.tsx",
-                                                                        lineNumber: 561,
-                                                                        columnNumber: 25
-                                                                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
-                                                                        children: [
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Icon, {
-                                                                                name: "spark",
-                                                                                size: 18
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/app/dashboard/page.tsx",
-                                                                                lineNumber: 567,
-                                                                                columnNumber: 27
-                                                                            }, this),
-                                                                            "Compare sounds",
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Icon, {
-                                                                                name: "arrow",
-                                                                                size: 17
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/app/dashboard/page.tsx",
-                                                                                lineNumber: 569,
-                                                                                columnNumber: 27
-                                                                            }, this)
-                                                                        ]
-                                                                    }, void 0, true, {
-                                                                        fileName: "[project]/app/dashboard/page.tsx",
-                                                                        lineNumber: 566,
-                                                                        columnNumber: 25
+                                                                        lineNumber: 342,
+                                                                        columnNumber: 23
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                                    lineNumber: 555,
+                                                                    lineNumber: 341,
                                                                     columnNumber: 21
-                                                                }, this),
-                                                                error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    role: "alert",
-                                                                    className: "mt-4 rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm leading-6 text-rose-700",
-                                                                    children: error
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/dashboard/page.tsx",
-                                                                    lineNumber: 575,
-                                                                    columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                            lineNumber: 483,
+                                                            lineNumber: 327,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                    lineNumber: 472,
+                                                    lineNumber: 316,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/dashboard/page.tsx",
-                                            lineNumber: 372,
+                                            lineNumber: 261,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1670,7 +1219,7 @@ function Home() {
                                                                             children: "Match analysis"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                                            lineNumber: 588,
+                                                                            lineNumber: 357,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1678,13 +1227,13 @@ function Home() {
                                                                             children: "Results"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                                            lineNumber: 589,
+                                                                            lineNumber: 358,
                                                                             columnNumber: 23
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                                    lineNumber: 587,
+                                                                    lineNumber: 356,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1692,13 +1241,13 @@ function Home() {
                                                                     children: "Step 3 · Your comparison results"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                                    lineNumber: 593,
+                                                                    lineNumber: 362,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                            lineNumber: 586,
+                                                            lineNumber: 355,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1721,7 +1270,7 @@ function Home() {
                                                                                             children: percent === null ? "—" : `${percent}%`
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                                                            lineNumber: 602,
+                                                                                            lineNumber: 371,
                                                                                             columnNumber: 31
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1729,18 +1278,18 @@ function Home() {
                                                                                             children: "Similarity"
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                                                            lineNumber: 605,
+                                                                                            lineNumber: 374,
                                                                                             columnNumber: 31
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                                                    lineNumber: 601,
+                                                                                    lineNumber: 370,
                                                                                     columnNumber: 29
                                                                                 }, this)
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/dashboard/page.tsx",
-                                                                                lineNumber: 600,
+                                                                                lineNumber: 369,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1748,7 +1297,7 @@ function Home() {
                                                                                 children: result.match_name || result.reference_name || selectedReference?.name
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/dashboard/page.tsx",
-                                                                                lineNumber: 608,
+                                                                                lineNumber: 377,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1756,13 +1305,13 @@ function Home() {
                                                                                 children: result.message || "Comparison completed by your audio analysis backend."
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/dashboard/page.tsx",
-                                                                                lineNumber: 611,
+                                                                                lineNumber: 380,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/app/dashboard/page.tsx",
-                                                                        lineNumber: 599,
+                                                                        lineNumber: 368,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1776,7 +1325,7 @@ function Home() {
                                                                                         children: "Similarity score"
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/app/dashboard/page.tsx",
-                                                                                        lineNumber: 618,
+                                                                                        lineNumber: 387,
                                                                                         columnNumber: 29
                                                                                     }, this),
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1784,13 +1333,13 @@ function Home() {
                                                                                         children: percent === null ? "Not provided" : `${percent}%`
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/app/dashboard/page.tsx",
-                                                                                        lineNumber: 619,
+                                                                                        lineNumber: 388,
                                                                                         columnNumber: 29
                                                                                     }, this)
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/app/dashboard/page.tsx",
-                                                                                lineNumber: 617,
+                                                                                lineNumber: 386,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1802,18 +1351,18 @@ function Home() {
                                                                                     }
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                                                    lineNumber: 622,
+                                                                                    lineNumber: 391,
                                                                                     columnNumber: 29
                                                                                 }, this)
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/dashboard/page.tsx",
-                                                                                lineNumber: 621,
+                                                                                lineNumber: 390,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/app/dashboard/page.tsx",
-                                                                        lineNumber: 616,
+                                                                        lineNumber: 385,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     result.details && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("pre", {
@@ -1821,13 +1370,13 @@ function Home() {
                                                                         children: JSON.stringify(result.details, null, 2)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/dashboard/page.tsx",
-                                                                        lineNumber: 627,
+                                                                        lineNumber: 396,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/dashboard/page.tsx",
-                                                                lineNumber: 598,
+                                                                lineNumber: 367,
                                                                 columnNumber: 23
                                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 className: "flex flex-col items-center py-8 text-center",
@@ -1839,14 +1388,14 @@ function Home() {
                                                                                 className: "absolute inset-3 rounded-full border border-violet-100"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/dashboard/page.tsx",
-                                                                                lineNumber: 635,
+                                                                                lineNumber: 404,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                                 className: "absolute inset-7 rounded-full border border-violet-100"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/dashboard/page.tsx",
-                                                                                lineNumber: 636,
+                                                                                lineNumber: 405,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1856,18 +1405,18 @@ function Home() {
                                                                                     size: 29
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                                                    lineNumber: 638,
+                                                                                    lineNumber: 407,
                                                                                     columnNumber: 29
                                                                                 }, this)
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/dashboard/page.tsx",
-                                                                                lineNumber: 637,
+                                                                                lineNumber: 406,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/app/dashboard/page.tsx",
-                                                                        lineNumber: 634,
+                                                                        lineNumber: 403,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1875,7 +1424,7 @@ function Home() {
                                                                         children: "Ready to analyze"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/dashboard/page.tsx",
-                                                                        lineNumber: 641,
+                                                                        lineNumber: 410,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1883,7 +1432,7 @@ function Home() {
                                                                         children: "Your match score and analysis will appear here once you compare a recording."
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/dashboard/page.tsx",
-                                                                        lineNumber: 642,
+                                                                        lineNumber: 411,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1893,31 +1442,31 @@ function Home() {
                                                                                 className: "h-2 w-2 rounded-full bg-violet-400"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/dashboard/page.tsx",
-                                                                                lineNumber: 646,
+                                                                                lineNumber: 415,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             "Waiting for audio input"
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/app/dashboard/page.tsx",
-                                                                        lineNumber: 645,
+                                                                        lineNumber: 414,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/dashboard/page.tsx",
-                                                                lineNumber: 633,
+                                                                lineNumber: 402,
                                                                 columnNumber: 23
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                            lineNumber: 596,
+                                                            lineNumber: 365,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                    lineNumber: 585,
+                                                    lineNumber: 354,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1931,7 +1480,7 @@ function Home() {
                                                                     children: "Reference preview"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                                    lineNumber: 657,
+                                                                    lineNumber: 426,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Icon, {
@@ -1939,13 +1488,13 @@ function Home() {
                                                                     size: 19
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                                    lineNumber: 658,
+                                                                    lineNumber: 427,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                            lineNumber: 656,
+                                                            lineNumber: 425,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1958,57 +1507,32 @@ function Home() {
                                                                         size: 22
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/dashboard/page.tsx",
-                                                                        lineNumber: 662,
+                                                                        lineNumber: 431,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                                    lineNumber: 661,
+                                                                    lineNumber: 430,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: "min-w-0",
-                                                                    children: [
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                            className: "truncate text-sm font-semibold",
-                                                                            children: selectedReference?.name
-                                                                        }, void 0, false, {
-                                                                            fileName: "[project]/app/dashboard/page.tsx",
-                                                                            lineNumber: 665,
-                                                                            columnNumber: 23
-                                                                        }, this),
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                            className: "mt-1 text-xs text-slate-400",
-                                                                            children: selectedReference?.category
-                                                                        }, void 0, false, {
-                                                                            fileName: "[project]/app/dashboard/page.tsx",
-                                                                            lineNumber: 666,
-                                                                            columnNumber: 23
-                                                                        }, this)
-                                                                    ]
-                                                                }, void 0, true, {
+                                                                    className: "min-w-0"
+                                                                }, void 0, false, {
                                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                                    lineNumber: 664,
+                                                                    lineNumber: 433,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                            lineNumber: 660,
+                                                            lineNumber: 429,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "mt-4 rounded-xl bg-slate-50 px-3 py-2",
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Waveform, {
-                                                                bars: 29
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/dashboard/page.tsx",
-                                                                lineNumber: 670,
-                                                                columnNumber: 21
-                                                            }, this)
+                                                            className: "mt-4 rounded-xl bg-slate-50 px-3 py-2"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                            lineNumber: 669,
+                                                            lineNumber: 436,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2016,13 +1540,13 @@ function Home() {
                                                             children: "Demo reference metadata. Connect your server-side reference audio files to enable playback and real analysis."
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                            lineNumber: 672,
+                                                            lineNumber: 438,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                    lineNumber: 655,
+                                                    lineNumber: 424,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2035,12 +1559,12 @@ function Home() {
                                                                 size: 21
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/dashboard/page.tsx",
-                                                                lineNumber: 680,
+                                                                lineNumber: 446,
                                                                 columnNumber: 21
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                            lineNumber: 679,
+                                                            lineNumber: 445,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -2048,7 +1572,7 @@ function Home() {
                                                             children: "How it works"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                            lineNumber: 682,
+                                                            lineNumber: 448,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2077,7 +1601,7 @@ function Home() {
                                                                             children: number
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                                            lineNumber: 690,
+                                                                            lineNumber: 456,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2087,7 +1611,7 @@ function Home() {
                                                                                     children: title
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                                                    lineNumber: 694,
+                                                                                    lineNumber: 460,
                                                                                     columnNumber: 27
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2095,42 +1619,42 @@ function Home() {
                                                                                     children: description
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                                                    lineNumber: 695,
+                                                                                    lineNumber: 461,
                                                                                     columnNumber: 27
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                                            lineNumber: 693,
+                                                                            lineNumber: 459,
                                                                             columnNumber: 25
                                                                         }, this)
                                                                     ]
                                                                 }, number, true, {
                                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                                    lineNumber: 689,
+                                                                    lineNumber: 455,
                                                                     columnNumber: 23
                                                                 }, this))
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/dashboard/page.tsx",
-                                                            lineNumber: 683,
+                                                            lineNumber: 449,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/dashboard/page.tsx",
-                                                    lineNumber: 678,
+                                                    lineNumber: 444,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/dashboard/page.tsx",
-                                            lineNumber: 584,
+                                            lineNumber: 353,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/dashboard/page.tsx",
-                                    lineNumber: 370,
+                                    lineNumber: 259,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
@@ -2140,51 +1664,51 @@ function Home() {
                                             children: "© 2026 SoundMatch · Audio analysis workspace"
                                         }, void 0, false, {
                                             fileName: "[project]/app/dashboard/page.tsx",
-                                            lineNumber: 705,
+                                            lineNumber: 471,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                             children: "Built with Next.js and Tailwind CSS"
                                         }, void 0, false, {
                                             fileName: "[project]/app/dashboard/page.tsx",
-                                            lineNumber: 706,
+                                            lineNumber: 472,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/dashboard/page.tsx",
-                                    lineNumber: 704,
+                                    lineNumber: 470,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/dashboard/page.tsx",
-                            lineNumber: 308,
+                            lineNumber: 198,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/dashboard/page.tsx",
-                    lineNumber: 285,
+                    lineNumber: 175,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/dashboard/page.tsx",
-            lineNumber: 231,
+            lineNumber: 121,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/dashboard/page.tsx",
-        lineNumber: 230,
+        lineNumber: 120,
         columnNumber: 5
     }, this);
 }
-_s(Home, "vtt8h/rHuDCzZM8NHPh7fAb3L/s=");
+_s1(Home, "vtt8h/rHuDCzZM8NHPh7fAb3L/s=");
 _c2 = Home;
 var _c, _c1, _c2;
-__turbopack_context__.k.register(_c, "Icon");
-__turbopack_context__.k.register(_c1, "Waveform");
+__turbopack_context__.k.register(_c, "PlayNoteButton");
+__turbopack_context__.k.register(_c1, "Icon");
 __turbopack_context__.k.register(_c2, "Home");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);

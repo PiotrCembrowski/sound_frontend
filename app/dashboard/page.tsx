@@ -1,14 +1,56 @@
-
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 
-const references = [
-  { id: 1, name: "Glass breaking", category: "Impact", duration: "0:03", color: "rose" },
-  { id: 2, name: "Bird singing", category: "Nature", duration: "0:08", color: "emerald" },
-  { id: 3, name: "Door closing", category: "Household", duration: "0:02", color: "amber" },
-  { id: 4, name: "Water flowing", category: "Nature", duration: "0:12", color: "blue" },
+import { useEffect, useRef, useState, useCallback } from "react";
+
+
+const NOTE_FILES = [
+  "c4", "d4", "e4",
+  "f4", "g4","a4", "b4",
 ];
+
+function PlayNoteButton() {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const handlePlay = useCallback(() => {
+    // Stop any currently playing note
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+
+    // Pick a random note
+    const randomNote = NOTE_FILES[Math.floor(Math.random() * NOTE_FILES.length)];
+    const src = `/assets/notes/4_octave/${randomNote}.mp3`;
+
+    const audio = new Audio(src);
+    audioRef.current = audio;
+    audio.play().catch((err) => {
+      console.error(`Failed to play ${src}`, err);
+    });
+  }, []);
+
+  return (
+    <button
+      onClick={handlePlay}
+      style={{
+        padding: "10px 24px",
+        fontSize: "1rem",
+        borderRadius: "8px",
+        border: "none",
+        background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+        color: "#fff",
+        cursor: "pointer",
+        fontWeight: 600,
+        transition: "transform 0.1s ease, box-shadow 0.2s ease",
+      }}
+      onMouseDown={(e) => e.currentTarget.style.transform = "scale(0.96)"}
+      onMouseUp={(e) => e.currentTarget.style.transform = "scale(1)"}
+    >
+      ▶ Play the note
+    </button>
+  );
+}
 
 function Icon({ name, size = 20 }) {
   const paths = {
@@ -44,24 +86,6 @@ function Icon({ name, size = 20 }) {
   );
 }
 
-function Waveform({ active = false, bars = 38 }) {
-  return (
-    <div className="flex h-12 items-center justify-center gap-[3px]" aria-label="Audio waveform">
-      {Array.from({ length: bars }, (_, i) => {
-        const height = 12 + ((i * 17 + i * i * 3) % 31);
-        return (
-          <span
-            key={i}
-            className={`w-[3px] rounded-full transition-colors ${
-              active ? "bg-violet-400" : "bg-violet-200"
-            }`}
-            style={{ height: `${height}px` }}
-          />
-        );
-      })}
-    </div>
-  );
-}
 
 export default function Home() {
   const [recording, setRecording] = useState(false);
@@ -90,141 +114,7 @@ export default function Home() {
     };
   }, []);
 
-  function clearAudio() {
-    if (audioUrl) URL.revokeObjectURL(audioUrl);
-    setAudioUrl("");
-    setAudioName("");
-    setRecordedBlob(null);
-    setResult(null);
-    setElapsed(0);
-    setError("");
-  }
 
-  function loadFile(file) {
-    if (!file) return;
-    if (!file.type.startsWith("audio/")) {
-      setError("Please select an audio file.");
-      return;
-    }
-    clearAudio();
-    const url = URL.createObjectURL(file);
-    setAudioUrl(url);
-    setAudioName(file.name);
-    setRecordedBlob(file);
-  }
-
-  async function startRecording() {
-    setError("");
-    if (!navigator.mediaDevices?.getUserMedia || !window.MediaRecorder) {
-      setError("Your browser does not support microphone recording. Try a recent version of Chrome or Edge.");
-      return;
-    }
-
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      streamRef.current = stream;
-      chunksRef.current = [];
-
-      const recorder = new MediaRecorder(stream);
-      recorderRef.current = recorder;
-
-      recorder.ondataavailable = (event) => {
-        if (event.data.size > 0) chunksRef.current.push(event.data);
-      };
-
-      recorder.onstop = () => {
-        const blob = new Blob(chunksRef.current, {
-          type: recorder.mimeType || "audio/webm",
-        });
-        const url = URL.createObjectURL(blob);
-        setAudioUrl((old) => {
-          if (old) URL.revokeObjectURL(old);
-          return url;
-        });
-        setAudioName("Microphone recording");
-        setRecordedBlob(blob);
-        setRecording(false);
-        stream.getTracks().forEach((track) => track.stop());
-        streamRef.current = null;
-        clearInterval(timerRef.current);
-      };
-
-      setElapsed(0);
-      setResult(null);
-      setAudioName("Recording...");
-      setRecording(true);
-      recorder.start();
-
-      timerRef.current = setInterval(() => {
-        setElapsed((value) => value + 1);
-      }, 1000);
-    } catch {
-      setError("Microphone access was denied. Allow microphone access in your browser settings and try again.");
-    }
-  }
-
-  function stopRecording() {
-    if (recorderRef.current?.state === "recording") {
-      recorderRef.current.stop();
-    }
-  }
-
-  async function compareAudio() {
-    if (!recordedBlob) {
-      setError("Record a sound or upload an audio file first.");
-      return;
-    }
-
-    setBusy(true);
-    setError("");
-    setResult(null);
-
-    try {
-      const formData = new FormData();
-      formData.append("audio", recordedBlob, audioName || "recording.webm");
-      formData.append("reference_id", String(selected));
-
-      // Connect this endpoint to your FastAPI backend.
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/compare`,
-        { method: "POST", body: formData }
-      );
-
-      if (!response.ok) {
-        throw new Error(
-          response.status === 404
-            ? "The /compare endpoint is not implemented in your backend yet."
-            : `The server returned error ${response.status}.`
-        );
-      }
-
-      const data = await response.json();
-      setResult(data);
-    } catch (err) {
-      setError(
-        err.message?.includes("Failed to fetch")
-          ? "Cannot reach the Python backend. Start FastAPI and check its CORS settings."
-          : err.message || "Audio comparison failed."
-      );
-    } finally {
-      setBusy(false);
-    }
-  }
-
-  const filtered = references.filter((item) =>
-    `${item.name} ${item.category}`.toLowerCase().includes(search.toLowerCase())
-  );
-
-  const selectedReference = references.find((item) => item.id === selected);
-  const formatTime = (seconds) =>
-    `${Math.floor(seconds / 60).toString().padStart(2, "0")}:${(seconds % 60)
-      .toString()
-      .padStart(2, "0")}`;
-
-  const score = result?.similarity ?? result?.score;
-  const percent = typeof score === "number"
-    ? Math.round(score <= 1 ? score * 100 : score)
-    : null;
 
   return (
     <main className="min-h-screen bg-[#f7f7fb] text-slate-900">
@@ -359,7 +249,6 @@ export default function Home() {
                   </span>
                 </div>
                 <div className="mt-3 text-3xl font-bold">
-                  {percent === null ? "--" : `${percent}%`}
                 </div>
                 <div className="mt-1 text-xs text-slate-400">
                   {result ? "Returned by your backend" : "No comparison yet"}
@@ -403,45 +292,15 @@ export default function Home() {
                               : "Use your microphone or choose an existing audio file to get started."}
                         </p>
 
-                        <div className="my-5 w-full max-w-sm">
-                          <Waveform active={recording || Boolean(recordedBlob)} />
-                        </div>
 
-                        {recording && (
-                          <div className="mb-4 flex items-center gap-2 text-sm font-semibold text-rose-600">
-                            <span className="h-2 w-2 animate-pulse rounded-full bg-rose-500" />
-                            REC {formatTime(elapsed)}
-                          </div>
-                        )}
 
                         <div className="flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row">
-                          {recording ? (
-                            <button onClick={stopRecording} className="inline-flex items-center justify-center gap-2 rounded-xl bg-rose-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-rose-100 transition hover:bg-rose-600">
-                              <span className="h-3 w-3 rounded-sm bg-white" />
-                              Stop recording
-                            </button>
-                          ) : (
-                            <button onClick={startRecording} className="inline-flex items-center justify-center gap-2 rounded-xl bg-violet-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-200 transition hover:-translate-y-0.5 hover:bg-violet-700">
-                              {recordedBlob ? "Play again" : "Play the note"}
-                            </button>
-                          )}
+                          <PlayNoteButton/>
                           <button
-                            onClick={() => fileRef.current?.click()}
-                            disabled={recording}
                             className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-violet-200 hover:text-violet-700 disabled:opacity-50"
                           >
                             Next
                           </button>
-                          <input
-                            ref={fileRef}
-                            type="file"
-                            accept="audio/*,.wav,.mp3,.flac,.ogg,.webm,.m4a"
-                            className="hidden"
-                            onChange={(event) => {
-                              loadFile(event.target.files?.[0]);
-                              event.target.value = "";
-                            }}
-                          />
                         </div>
 
                         <p className="mt-4 text-[11px] text-slate-400">
@@ -450,21 +309,6 @@ export default function Home() {
                       </div>
                     </div>
 
-                    {audioUrl && (
-                      <div className="mt-4 flex items-center gap-3 rounded-xl border border-slate-200 p-4">
-                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-50 text-violet-600">
-                          <Icon name="music" size={19} />
-                        </div>
-                        <div className="min-w-0 flex-1">
-                          <div className="truncate text-sm font-semibold">{audioName}</div>
-                          <div className="mt-1 text-xs text-slate-400">Audio input ready</div>
-                        </div>
-                        <audio controls src={audioUrl} className="h-9 max-w-[140px]" />
-                        <button onClick={clearAudio} title="Remove audio" className="rounded-lg p-2 text-slate-400 transition hover:bg-rose-50 hover:text-rose-600">
-                          <Icon name="trash" size={17} />
-                        </button>
-                      </div>
-                    )}
                   </div>
                 </div>
 
@@ -476,7 +320,7 @@ export default function Home() {
                       <p className="mt-1 text-xs text-slate-400">Step 2 · Select the sound to compare against</p>
                     </div>
                     <span className="w-fit rounded-full bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-500">
-                      {references.length} sounds
+
                     </span>
                   </div>
 
@@ -493,89 +337,14 @@ export default function Home() {
                       />
                     </div>
 
-                    <div className="space-y-2">
-                      {filtered.map((item) => {
-                        const isSelected = selected === item.id;
-                        return (
-                          <button
-                            key={item.id}
-                            onClick={() => {
-                              setSelected(item.id);
-                              setResult(null);
-                            }}
-                            className={`flex w-full items-center gap-3 rounded-xl border p-3 text-left transition ${
-                              isSelected
-                                ? "border-violet-300 bg-violet-50/70 ring-1 ring-violet-100"
-                                : "border-slate-100 hover:border-slate-200 hover:bg-slate-50"
-                            }`}
-                          >
-                            <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${
-                              item.color === "rose" ? "bg-rose-50 text-rose-500" :
-                              item.color === "emerald" ? "bg-emerald-50 text-emerald-600" :
-                              item.color === "amber" ? "bg-amber-50 text-amber-600" :
-                              "bg-blue-50 text-blue-600"
-                            }`}>
-                              <Icon name="music" size={20} />
-                            </div>
-                            <div className="min-w-0 flex-1">
-                              <div className="text-sm font-semibold">{item.name}</div>
-                              <div className="mt-1 text-xs text-slate-400">
-                                {item.category} <span className="mx-1.5">·</span> {item.duration}
-                              </div>
-                            </div>
-                            {isSelected ? (
-                              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-violet-600 text-white">
-                                <Icon name="check" size={14} />
-                              </span>
-                            ) : (
-                              <span className="h-5 w-5 shrink-0 rounded-full border border-slate-300" />
-                            )}
-                          </button>
-                        );
-                      })}
-                      {filtered.length === 0 && (
-                        <p className="py-8 text-center text-sm text-slate-400">
-                          No reference sounds match your search.
-                        </p>
-                      )}
-                    </div>
 
                     <div className="mt-5 flex items-start gap-3 rounded-xl bg-slate-50 p-4">
                       <div className="mt-0.5 text-violet-600">
                         <Icon name="spark" size={18} />
                       </div>
-                      <div>
-                        <div className="text-sm font-semibold">Selected: {selectedReference?.name}</div>
-                        <p className="mt-1 text-xs leading-5 text-slate-500">
-                          Your recording will be sent to the comparison API with this reference ID.
-                        </p>
-                      </div>
                     </div>
 
-                    <button
-                      onClick={compareAudio}
-                      disabled={!recordedBlob || busy || recording}
-                      className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-violet-600 px-5 py-3.5 text-sm font-semibold text-white shadow-lg shadow-violet-100 transition hover:bg-violet-700 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:shadow-none"
-                    >
-                      {busy ? (
-                        <>
-                          <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
-                          Comparing audio...
-                        </>
-                      ) : (
-                        <>
-                          <Icon name="spark" size={18} />
-                          Compare sounds
-                          <Icon name="arrow" size={17} />
-                        </>
-                      )}
-                    </button>
 
-                    {error && (
-                      <div role="alert" className="mt-4 rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm leading-6 text-rose-700">
-                        {error}
-                      </div>
-                    )}
                   </div>
                 </div>
               </div>
@@ -662,12 +431,9 @@ export default function Home() {
                       <Icon name="wave" size={22} />
                     </div>
                     <div className="min-w-0">
-                      <div className="truncate text-sm font-semibold">{selectedReference?.name}</div>
-                      <div className="mt-1 text-xs text-slate-400">{selectedReference?.category}</div>
                     </div>
                   </div>
                   <div className="mt-4 rounded-xl bg-slate-50 px-3 py-2">
-                    <Waveform bars={29} />
                   </div>
                   <p className="mt-3 text-xs leading-5 text-slate-400">
                     Demo reference metadata. Connect your server-side reference audio files to enable playback and real analysis.
